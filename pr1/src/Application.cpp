@@ -35,46 +35,28 @@ int main(void)
 	const char* glsl_version = "#version 150";
 	unsigned int ind[] =
 	{
-		0,1,2,
-		2,3,0,
-		4,5,6,
-		6,7,4,
 		0,1,5,
-		5,4,0,
-		2,3,7,
-		7,6,2,
-		1,2,6,
-		6,5,1,
-		3,0,4,
-		4,7,3
+		5,4,0
 	};
 	unsigned int lind[] =
 	{
 		0,1,
-		0,3,
 		0,4,
-		1,2,
-		1,5,
-		2,3,
-		2,6,
-		3,7,
-		4,7,
 		4,5,
-		5,6,
-		6,7
+		1,5
 	};
-	Square c1;
+	Square sq;
 	//VertexArray
 	VertexArray va;
 	//Buffer with coordinates
-	VertexBuffer vb(c1.positions, 24);
+	VertexBuffer vb(sq.positions, 24);
 
 	VertexBufferLayout layout;
 	layout.__push<float>(3);
 	va.__add_buffer(vb, layout);
 
-	IndexBuffer ib(ind, 36);
-	IndexBuffer line(lind, 24);
+	IndexBuffer ib(ind, 6);
+	IndexBuffer line(lind, 8);
 
 
 	glm::mat4 proj = glm::ortho(0.0f, 800.0f, 0.0f, 800.0f, -1.0f, 1.0f);
@@ -103,6 +85,7 @@ int main(void)
 	ImGui_ImplGlfw_InitForOpenGL(MainStage.window, true);
 	ImGui_ImplOpenGL3_Init(glsl_version);
 
+	unsigned int type;
 	glm::vec3 scaling(1, 1, 1);
 	glm::vec3 cameraTranslation(0, 0, 0);
 	glm::vec3 translation(0, 0, 0);
@@ -131,14 +114,17 @@ int main(void)
 			renderer.__draw(va, ib, shader, 0);
 		}
 
-		shader.__set_uniform4f("u_Color", 0.0f, 0.0f, 0.0f, 1.0f);
+		shader.__set_uniform4f("u_Color", 1.0f, 1.0f, 1.0f, 1.0f);
 
 		renderer.__draw(va, line, shader,1);
-		if(ImGui::Button("Square"))
+		if (ImGui::Button("Square"))
+			type = 1;
+		if (ImGui::Button("Triangle"))
+			type = 2;
 
-		ImGui::SliderFloat3("Scaling", &scaling.x, 1.0f, 10.0f);
-		ImGui::SliderFloat3("Translation", &translation.x, 0.0f, 800.0f);
-		ImGui::SliderFloat3("Camera translation", &cameraTranslation.x, -800.0f, 800.0f);
+		ImGui::SliderFloat2("Scaling", &scaling.x, 1.0f, 10.0f);
+		ImGui::SliderFloat2("Translation", &translation.x, 0.0f, 800.0f);
+		ImGui::SliderFloat2("Camera translation", &cameraTranslation.x, -800.0f, 800.0f);
 		ImGui::SliderFloat3("Colors", &colors[0], -0.0f, 1.0f);
 		ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
 		
