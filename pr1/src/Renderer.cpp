@@ -23,7 +23,7 @@ void Renderer::__clear() const
 	GlCall(glClear(GL_COLOR_BUFFER_BIT));
 }
 
-void Renderer::__draw(const VertexArray& va, const IndexBuffer& ib, const Shader& shader, const bool line) const
+void Renderer::__draw(const VertexArray& va, const IndexBuffer& ib, const Shader& shader, const bool line, const unsigned int start) const
 {
 	shader.__bind();
 	va.__bind();

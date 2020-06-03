@@ -19,5 +19,5 @@ private:
 
 public:
 	void __clear() const;
-	void __draw(const VertexArray& va, const IndexBuffer& ib, const Shader& shader, const bool line) const;
+	void __draw(const VertexArray& va, const IndexBuffer& ib, const Shader& shader, const bool line,const unsigned int start) const;
 };

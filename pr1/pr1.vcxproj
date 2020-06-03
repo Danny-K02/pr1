@@ -24,10 +24,10 @@
     <ClCompile Include="src\IndexBuffer.cpp" />
     <ClCompile Include="src\Menu.cpp" />
     <ClCompile Include="src\Object.cpp" />
-    <ClCompile Include="src\Polygon.cpp" />
     <ClCompile Include="src\Renderer.cpp" />
     <ClCompile Include="src\Shader.cpp" />
     <ClCompile Include="src\Stage.cpp" />
+    <ClCompile Include="src\Triangle.cpp" />
     <ClCompile Include="src\vendor\glm\detail\glm.cpp" />
     <ClCompile Include="src\vendor\imgui\imgui.cpp" />
     <ClCompile Include="src\vendor\imgui\imgui_draw.cpp" />
@@ -181,9 +181,9 @@
     <ClInclude Include="src\IndexBuffer.h" />
     <ClInclude Include="src\Menu.h" />
     <ClInclude Include="src\Object.h" />
-    <ClInclude Include="src\Polygon.h" />
     <ClInclude Include="src\Shader.h" />
     <ClInclude Include="src\Stage.h" />
+    <ClInclude Include="src\Triangle.h" />
     <ClInclude Include="src\vendor\glm\common.hpp" />
     <ClInclude Include="src\vendor\glm\detail\compute_common.hpp" />
     <ClInclude Include="src\vendor\glm\detail\compute_vector_relational.hpp" />
